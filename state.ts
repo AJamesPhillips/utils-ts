@@ -13,7 +13,7 @@ export function typedReduceReducers<T, A>(...functions: IReducerFunction<T, A>[]
 
 export function newStateGeneric<State, PartialState>() {
   return function(oldState: State, newPartialState: PartialState): State {
-    return _.assign<{}, State>({}, oldState, newPartialState);
+    return _.assign<{}, State, PartialState>({}, oldState, newPartialState);
   };
 }
 

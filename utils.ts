@@ -101,3 +101,10 @@ export function nodeAtob(b64Encoded: string) {
   }
   return decoded;
 }
+
+
+export function encodeDetails(details: any) {
+  var detailsStr = JSON.stringify(details);
+  var base64Details = nodeBtoa(detailsStr);
+  return encodeURIComponent(base64Details);
+}

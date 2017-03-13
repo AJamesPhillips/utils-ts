@@ -1,5 +1,5 @@
 
-export function randomString(length: number) {
+export function random_string(length: number) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 

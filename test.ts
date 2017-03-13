@@ -18,7 +18,7 @@ export function expectToEqual(value1: any, value2: any, testName: string = '', t
 }
 
 export function expectToContain<T>(listOfValues: T[], value: T, testName: string = '') {
-  if(!_.contains(listOfValues, value)) {
+  if(!_.includes(listOfValues, value)) {
     throw new Error(`FAILED: "${testName}" Value not contained in list: "${value}" not in "${listOfValues.map((v) => v.toString()).join(', ')}"`);
   } else {
     console.log(`PASSED: "${testName}"`);

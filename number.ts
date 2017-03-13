@@ -29,23 +29,23 @@ export var is0OrGreaterInteger = (num: number, loud: boolean = false): boolean =
   return is0OrMoreInt;
 }
 
-export var integerParser = (val: string): number => {
+export var integerParser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
   return isInteger(value) ? value : undefined;
 }
 
-export var floatParser = (val: string): number => {
+export var floatParser = (val: string): number | undefined => {
   var value = parseFloat(val);
   return isNumber(value) ? value : undefined;
 }
 
 
-export var integerPositiveParser = (val: string): number => {
+export var integerPositiveParser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
   return isPositiveInteger(value) ? value : undefined;
 }
 
-export var integer0OrMoreParser = (val: string): number => {
+export var integer0OrMoreParser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
   return is0OrGreaterInteger(value) ? value : undefined;
 }
