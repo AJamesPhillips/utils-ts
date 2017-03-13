@@ -12,9 +12,9 @@ export function random_string(length: number) {
 
 /**
  * @method bounded  Returns double
- * @param lowerBound inclusive
- * @param upperBound exclusive
+ * @param lower_bound inclusive
+ * @param upper_bound exclusive
  */
-export function bounded(lowerBound: number, upperBound: number) {
-  return Math.random() * (upperBound - lowerBound) + lowerBound;
+export function bounded(lower_bound: number, upper_bound: number) {
+  return Math.random() * (upper_bound - lower_bound) + lower_bound;
 }

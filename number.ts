@@ -1,51 +1,51 @@
 import * as _ from 'lodash';
 
 
-export var isNumber = (val: any): boolean => {
+export var is_number = (val: any): boolean => {
   return _.isNumber(val) && !_.isNaN(val);
 }
 
-export var isInteger = (num: number, loud: boolean = false): boolean => {
-  var isInt = isNumber(num) && (num === 0 || (Math.round(num)/num) === 1);
-  if(!isInt && loud) throw new Error(`Not integer: ${num}`);
-  return isInt;
+export var is_integer = (num: number, loud: boolean = false): boolean => {
+  var is_int = is_number(num) && (num === 0 || (Math.round(num)/num) === 1);
+  if(!is_int && loud) throw new Error(`Not integer: ${num}`);
+  return is_int;
 }
 
-export var is0OrGreater = (num: number, loud: boolean = false): boolean => {
-  var is0OrMore = num >= 0;
-  if(!is0OrMore && loud) throw new Error(`Not >= 0: ${num}`);
-  return is0OrMore;
+export var is_0_or_greater = (num: number, loud: boolean = false): boolean => {
+  var is_0_or_more = num >= 0;
+  if(!is_0_or_more && loud) throw new Error(`Not >= 0: ${num}`);
+  return is_0_or_more;
 }
 
-export var isPositiveInteger = (num: number, loud: boolean = false): boolean => {
-  var isPosInt = isInteger(num, false) && num > 0;
+export var is_positive_integer = (num: number, loud: boolean = false): boolean => {
+  var isPosInt = is_integer(num, false) && num > 0;
   if(!isPosInt && loud) throw new Error(`Not positive integer: ${num}`);
   return isPosInt;
 }
 
-export var is0OrGreaterInteger = (num: number, loud: boolean = false): boolean => {
-  var is0OrMoreInt = isInteger(num, false) && is0OrGreater(num, false);
-  if(!is0OrMoreInt && loud) throw new Error(`Not integer >= 0: ${num}`);
-  return is0OrMoreInt;
+export var is_0_or_greater_integer = (num: number, loud: boolean = false): boolean => {
+  var is_0_or_more_int = is_integer(num, false) && is_0_or_greater(num, false);
+  if(!is_0_or_more_int && loud) throw new Error(`Not integer >= 0: ${num}`);
+  return is_0_or_more_int;
 }
 
-export var integerParser = (val: string): number | undefined => {
+export var integer_parser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
-  return isInteger(value) ? value : undefined;
+  return is_integer(value) ? value : undefined;
 }
 
-export var floatParser = (val: string): number | undefined => {
+export var float_parser = (val: string): number | undefined => {
   var value = parseFloat(val);
-  return isNumber(value) ? value : undefined;
+  return is_number(value) ? value : undefined;
 }
 
 
-export var integerPositiveParser = (val: string): number | undefined => {
+export var integer_positive_parser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
-  return isPositiveInteger(value) ? value : undefined;
+  return is_positive_integer(value) ? value : undefined;
 }
 
-export var integer0OrMoreParser = (val: string): number | undefined => {
+export var integer_0_or_more_parser = (val: string): number | undefined => {
   var value = parseInt(val, 10);
-  return is0OrGreaterInteger(value) ? value : undefined;
+  return is_0_or_greater_integer(value) ? value : undefined;
 }

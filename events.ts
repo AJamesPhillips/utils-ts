@@ -1,31 +1,34 @@
-interface EventResult {}
+import * as _ from 'lodash';
 
 
-interface Observer {
-  event: (eventResult: EventResult) => void
+export interface EventResult {}
+
+
+export interface Observer {
+  event: (event_result: EventResult) => void
 }
 
 
-interface Subject {
-  addObserver: (observer: Observer) => void;
-  removeObserver: (observer: Observer) => void;
+export interface Subject {
+  add_observer: (observer: Observer) => void;
+  remove_observer: (observer: Observer) => void;
 }
 
 
-class SubjectBase implements Subject {
+export class SubjectBase implements Subject {
   private observers: Observer[] = [];
 
-  addObserver(observer: Observer) {
+  add_observer(observer: Observer) {
     this.observers.push(observer);
   }
 
-  removeObserver(observer: Observer) {
+  remove_observer(observer: Observer) {
     // TODO can we remove the cast?
     this.observers = <Observer[]> _.reject(this.observers, (o) => o === observer);
   }
 
-  protected informObservers(eventResult: EventResult) {
-    this.observers.map((observer) => observer.event(eventResult));
+  protected inform_observers(event_result: EventResult) {
+    this.observers.map((observer) => observer.event(event_result));
   }
 
   destroy(): void {
@@ -34,12 +37,4 @@ class SubjectBase implements Subject {
     // important for helping GC.
     this.observers = [];
   }
-}
-
-
-export {
-  EventResult,
-  Observer,
-  Subject,
-  SubjectBase,
 }

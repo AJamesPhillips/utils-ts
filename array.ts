@@ -6,48 +6,48 @@ interface IPredicate<T> {
 }
 
 
-export function copyListWithReplace<T>(listT: T[], index: number, newObj: T) {
-  return listT
+export function copy_list_with_replace<T>(list_t: T[], index: number, new_obj: T) {
+  return list_t
     .slice(0, index)
-    .concat([newObj])
-    .concat(listT.slice(index + 1, listT.length));
+    .concat([new_obj])
+    .concat(list_t.slice(index + 1, list_t.length));
 }
 
 
-export function copyListExcludingIndex<T>(listT: T[], index: number): T[] {
-  return listT.slice(0, index).concat(listT.slice(index + 1, listT.length));
+export function copy_list_excluding_index<T>(list_t: T[], index: number): T[] {
+  return list_t.slice(0, index).concat(list_t.slice(index + 1, list_t.length));
 }
 
 
-export function findIndexByPredicate<T>(list: T[], predicate: IPredicate<T>): number {
+export function find_index_by_predicate<T>(list: T[], predicate: IPredicate<T>): number {
   return _.findIndex(list, predicate);
 }
 
 
 export function updateEntryByPredicateAndCopyList<T, TPartial>(
-  listT: T[], predicate: IPredicate<T>, update: TPartial): T[] {
-  var index = findIndexByPredicate(listT, predicate);
+  list_t: T[], predicate: IPredicate<T>, update: TPartial): T[] {
+  var index = find_index_by_predicate(list_t, predicate);
   if(index === -1) throw new Error('No entry found with predicate');
 
-  var updatedObj = _.assign<any, T>({}, listT[index], update);
+  var updated_obj = _.assign<T>({}, list_t[index], update);
 
-  return copyListWithReplace<T>(listT, index, updatedObj);
+  return copy_list_with_replace<T>(list_t, index, updated_obj);
 }
 
 
-export function updateEntriesByPredicateAndCopyList<T>(
-  listT: T[], predicate: IPredicate<T>, updateFn: ((item: T) => T)): T[] {
-  var newList: T[] = [];
-  var changedList = false;
-  for(var i = 0, len = listT.length; i < len; ++i) {
-    var item = listT[i];
+export function update_entries_by_predicate_and_copy_list<T>(
+  list_t: T[], predicate: IPredicate<T>, update_fn: ((item: T) => T)): T[] {
+  var new_list: T[] = [];
+  var changed_list = false;
+  for(var i = 0, len = list_t.length; i < len; ++i) {
+    var item = list_t[i];
     if(predicate(item)) {
-      changedList = true;
-      newList.push(updateFn(item));
+      changed_list = true;
+      new_list.push(update_fn(item));
     } else {
-      newList.push(item);
+      new_list.push(item);
     }
   }
-  if(!changedList) newList = listT;
-  return newList;
+  if(!changed_list) new_list = list_t;
+  return new_list;
 }
