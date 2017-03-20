@@ -24,7 +24,7 @@ export function find_index_by_predicate<T>(list: T[], predicate: IPredicate<T>):
 }
 
 
-export function updateEntryByPredicateAndCopyList<T, TPartial>(
+export function update_entry_by_predicate_and_copy_list<T, TPartial>(
   list_t: T[], predicate: IPredicate<T>, update: TPartial): T[] {
   var index = find_index_by_predicate(list_t, predicate);
   if(index === -1) throw new Error('No entry found with predicate');
