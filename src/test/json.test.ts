@@ -30,7 +30,6 @@ describe('json', function() {
       let optional_date_as_bad_string: Date | string | undefined = '2017-03-20 1';
 
       let result = from_pojo_date(optional_date_as_bad_string);
-      assert.equal(true, result instanceof Date);
       assert.equal(true, isNaN(result.getTime()));
     });
   });

@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "rm -rf build && tsc && mocha build/test/test.js"
+    "test": "rm -rf build && tsc && cd build && mocha"
   },
   "repository": {
     "type": "git",
