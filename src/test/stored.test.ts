@@ -35,7 +35,7 @@ describe('stored', function() {
       let optional_date_as_bad_string: Date | string | undefined = '2017-03-20 1';
 
       let result = parse_date(optional_date_as_bad_string);
-      assert.equal(true, isNaN(result.getTime()));
+      assert(isNaN(result.getTime()));
     });
   });
 
@@ -50,17 +50,17 @@ describe('stored', function() {
       let optional_false_bool_as_string: boolean | string | undefined = 'false';
       let optional_malformed_bool_as_string: boolean | string | undefined = 'tru';
 
-      assert.equal(true, parse_bool(optional_true_bool_as_string));
-      assert.equal(false, parse_bool(optional_false_bool_as_string));
-      assert.equal(false, parse_bool(optional_malformed_bool_as_string));
+      assert(parse_bool(optional_true_bool_as_string));
+      assert(!parse_bool(optional_false_bool_as_string));
+      assert(!parse_bool(optional_malformed_bool_as_string));
     });
 
     it('should return a boolean when value is a boolean', function() {
       let optional_true_bool_as_boolean: boolean | string | undefined = true;
       let optional_false_bool_as_boolean: boolean | string | undefined = false;
 
-      assert.equal(true, parse_bool(optional_true_bool_as_boolean));
-      assert.equal(false, parse_bool(optional_false_bool_as_boolean));
+      assert(parse_bool(optional_true_bool_as_boolean));
+      assert(!parse_bool(optional_false_bool_as_boolean));
     });
   });
 });
