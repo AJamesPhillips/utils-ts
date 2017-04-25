@@ -38,17 +38,17 @@ export class ReactComponentBase<IRxProps, IRxState> extends React.Component<IRxP
 //   return a(RxComponent);
 // }
 
-export interface IRouteProps extends RouteComponentProps<{}, {}> {}
+export interface IRouteProps extends RouteComponentProps<{}> {}
 
 export function route_props_to_string(route_props: IRouteProps): string {
     return route_props.location.pathname + route_props.location.search;
 }
 
-export function key_in_query(props: RouteComponentProps<{}, {}>, key: string): boolean {
+export function key_in_query(props: RouteComponentProps<{}>, key: string): boolean {
     var query =  (props.location as any).query; // tslint:disable-line
     return _.has(query, key);
 }
 
-export function value_from_query(props: RouteComponentProps<{}, {}>, key: string): string {
+export function value_from_query(props: RouteComponentProps<{}>, key: string): string {
     return (props.location as any).query[key]; // tslint:disable-line
 }

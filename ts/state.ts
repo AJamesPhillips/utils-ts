@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-var reduce_reducers = require("reduce-reducers");
+import reduce_reducers from "reduce-reducers";
 
 export interface IReducerFunction<T, A> {
     (state: T, action?: A): T;
