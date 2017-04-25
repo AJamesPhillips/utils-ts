@@ -1,7 +1,6 @@
 {
-  "name": "utils-ts",
-  "version": "0.1.0",
-  "scope": "ajp",
+  "name": "@ajp/utils-ts",
+  "version": "0.1.2",
   "description": "",
   "main": "js/index.js",
   "typings": "js/index",

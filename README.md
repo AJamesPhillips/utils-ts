@@ -3,4 +3,4 @@
 
 Then inside your project
 
-    import {random_string} from "utils-ts/random";
+    import {random_string} from "@ajp/utils-ts/random";
