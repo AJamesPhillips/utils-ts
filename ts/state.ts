@@ -1,12 +1,12 @@
 import * as _ from "lodash";
-import reduce_reducers from "reduce-reducers";
+import reduce_reducers = require("reduce-reducers");
 
 export interface IReducerFunction<T, A> {
     (state: T, action?: A): T;
 }
 
 export function typed_reduce_reducers<T, A>(...functions: IReducerFunction<T, A>[]): IReducerFunction<T, A> {
-    return reduce_reducers(...functions);
+    return (reduce_reducers as any)(...functions);
 }
 
 /** Returns a typed function useful inside reducer functions.  It safely takes

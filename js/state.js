@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = require("lodash");
-var reduce_reducers_1 = require("reduce-reducers");
+var reduce_reducers = require("reduce-reducers");
 function typed_reduce_reducers() {
     var functions = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         functions[_i] = arguments[_i];
     }
-    return reduce_reducers_1.default.apply(void 0, functions);
+    return reduce_reducers.apply(void 0, functions);
 }
 exports.typed_reduce_reducers = typed_reduce_reducers;
 /** Returns a typed function useful inside reducer functions.  It safely takes
