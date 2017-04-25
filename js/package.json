@@ -1,10 +1,14 @@
 {
-  "name": "utils-ts-parent",
-  "version": "0.0.0",
-  "private": true,
+  "name": "utils-ts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "js/index.js",
+  "typings": "js/index",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "test": "npm run build && cd js && npm install && npm test",
-    "build": "rm js/*.js js/*.ts js/*.map js/test/* || true && tsc"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,9 +21,9 @@
   },
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
-    "@types/jest": "^19.2.2"
+    "jest": "^19.0.2"
   },
   "dependencies": {
-    "@types/reduce-reducers": "^0.1.0"
+    "reduce-reducers": "^0.1.2"
   }
 }
