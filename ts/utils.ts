@@ -58,7 +58,7 @@ export function simple_objects_equal<T extends IndexableByString<any>>(props: st
     }
 }
 
-interface IQueryParams {
+export interface IQueryParams {
     [key: string]: string;
 }
 

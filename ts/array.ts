@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-interface IPredicate<T> {
+export interface IPredicate<T> {
     (t: T): boolean;
 }
 

@@ -1,0 +1,9 @@
+export declare var is_number: (val: any) => boolean;
+export declare var is_integer: (num: number, loud?: boolean) => boolean;
+export declare var is_0_or_greater: (num: number, loud?: boolean) => boolean;
+export declare var is_positive_integer: (num: number, loud?: boolean) => boolean;
+export declare var is_0_or_greater_integer: (num: number, loud?: boolean) => boolean;
+export declare var integer_parser: (val: string) => number | undefined;
+export declare var float_parser: (val: string) => number | undefined;
+export declare var integer_positive_parser: (val: string) => number | undefined;
+export declare var integer_0_or_more_parser: (val: string) => number | undefined;
