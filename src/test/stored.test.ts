@@ -1,6 +1,4 @@
 
-import * as assert from "assert";
-
 import {parse_date, parse_bool} from "../stored";
 
 
@@ -14,35 +12,35 @@ describe("stored", function() {
     describe("parse_date", function() {
         it("should return undefined when value is not present", function() {
             let optional_date_or_string: Date | string | undefined = undefined;
-            assert.equal(undefined, parse_date(optional_date_or_string));
+            expect(undefined).toEqual(parse_date(optional_date_or_string));
         });
 
         it("should return a date when value is a string", function() {
             let optional_date_as_string: Date | string | undefined = "2017-03-20 12:20:30Z+3";
 
             let expected_date = new Date("2017-03-20 12:20:30Z+3")
-            assert.equal(expected_date.getTime(), parse_date(optional_date_as_string).getTime());
+            expect(expected_date.getTime()).toEqual(parse_date(optional_date_as_string).getTime());
         });
 
         it("should return a date when value is a date", function() {
             let optional_date_as_date: Date | string | undefined = new Date("2017-03-20 12:20:30Z+3");
 
             let expected_date = new Date("2017-03-20 12:20:30Z+3")
-            assert.equal(expected_date.getTime(), parse_date(optional_date_as_date).getTime());
+            expect(expected_date.getTime()).toEqual(parse_date(optional_date_as_date).getTime());
         });
 
         it("should return undefined when value is a malformed string", function() {
             let optional_date_as_bad_string: Date | string | undefined = "2017-03-20 1";
 
             let result = parse_date(optional_date_as_bad_string);
-            assert(isNaN(result.getTime()));
+            expect(isNaN(result.getTime())).toBeTruthy();
         });
     });
 
     describe("parse_bool", function() {
         it("should return undefined when value is not present", function() {
             let optional_bool_or_string: string | boolean | undefined = undefined;
-            assert.equal(undefined, parse_bool(optional_bool_or_string));
+            expect(undefined).toEqual(parse_bool(optional_bool_or_string));
         });
 
         it("should return a boolean when value is a string", function() {
@@ -50,17 +48,17 @@ describe("stored", function() {
             let optional_false_bool_as_string: string | boolean | undefined = "false";
             let optional_malformed_bool_as_string: string | boolean | undefined = "tru";
 
-            assert(parse_bool(optional_true_bool_as_string));
-            assert(!parse_bool(optional_false_bool_as_string));
-            assert(!parse_bool(optional_malformed_bool_as_string));
+            expect(parse_bool(optional_true_bool_as_string)).toBeTruthy();
+            expect(parse_bool(optional_false_bool_as_string)).toBeFalsy();
+            expect(parse_bool(optional_malformed_bool_as_string)).toBeFalsy();
         });
 
         it("should return a boolean when value is a boolean", function() {
             let optional_true_bool_as_boolean: string | boolean | undefined = true;
             let optional_false_bool_as_boolean: string | boolean | undefined = false;
 
-            assert(parse_bool(optional_true_bool_as_boolean));
-            assert(!parse_bool(optional_false_bool_as_boolean));
+            expect(parse_bool(optional_true_bool_as_boolean)).toBeTruthy();
+            expect(parse_bool(optional_false_bool_as_boolean)).toBeFalsy();
         });
     });
 });

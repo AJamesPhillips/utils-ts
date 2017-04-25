@@ -1,13 +1,13 @@
 {
   "name": "utils-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "rm -rf build && tsc && cd build && mocha"
+    "test": "rm -rf build && tsc && cd build && jest"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
-    "mocha": "^3.2.0"
+    "@types/jest": "^19.2.2",
+    "jest": "^19.0.2"
   },
   "dependencies": {
     "@types/reduce-reducers": "^0.1.0",

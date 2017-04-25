@@ -1,7 +1,4 @@
-import * as assert from "assert";
-
 import {make_new_state_generic} from "../state";
-
 
 describe("state", function() {
     interface IPartialState {
@@ -18,7 +15,7 @@ describe("state", function() {
         it("should return a function to add making a new state object", function() {
             let make_new_state = make_new_state_generic<IState, IPartialState>();
 
-            assert(make_new_state instanceof Function);
+            expect(make_new_state instanceof Function).toBeTruthy();
         });
 
         it("the returned function should make a new state object", function() {
@@ -33,8 +30,8 @@ describe("state", function() {
             }
             let new_state = make_new_state(current_state, partial_state);
 
-            assert.notEqual(new_state, current_state);
-            assert.deepEqual(new_state, {attr: "1", attr2: "3"});
+            expect(new_state).not.toBe(current_state);
+            expect(new_state).toEqual({attr: "1", attr2: "3"});
         });
     });
 });
