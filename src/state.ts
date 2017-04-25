@@ -1,15 +1,13 @@
-import * as _ from 'lodash';
-var reduce_reducers = require('reduce-reducers');
-
+import * as _ from "lodash";
+var reduce_reducers = require("reduce-reducers");
 
 export interface IReducerFunction<T, A> {
-  (state: T, action?: A): T;
+    (state: T, action?: A): T;
 }
 
 export function typed_reduce_reducers<T, A>(...functions: IReducerFunction<T, A>[]): IReducerFunction<T, A> {
-  return reduce_reducers(...functions);
+    return reduce_reducers(...functions);
 }
-
 
 /** Returns a typed function useful inside reducer functions.  It safely takes
  * the old state and the new partial state and creates a new object.
@@ -18,8 +16,8 @@ export function typed_reduce_reducers<T, A>(...functions: IReducerFunction<T, A>
  * mutating the object passed into the reducer as the current state argument).
  */
 export function make_new_state_generic<State, PartialState>() {
-  let make_new_state = function(old_state: State, new_partial_state: PartialState): State {
-    return _.assign<{}, State, PartialState>({}, old_state, new_partial_state);
-  };
-  return make_new_state;
+    let make_new_state = function(old_state: State, new_partial_state: PartialState): State {
+        return _.assign<{}, State, PartialState>({}, old_state, new_partial_state);
+    };
+    return make_new_state;
 }
