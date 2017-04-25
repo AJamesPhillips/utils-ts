@@ -104,3 +104,14 @@ export function encode_details(details: any) {
     var base64_details = node_btoa(details_str);
     return encodeURIComponent(base64_details);
 }
+
+/**
+ * Utility function to create a K:V from a list of strings
+ * @see {@link https://basarat.gitbooks.io/typescript/docs/types/literal-types.html}
+ */
+export function str_enum<T extends string>(o: Array<T>): {[K in T]: K} {
+    return o.reduce((res, key) => {
+        res[key] = key;
+        return res;
+    }, Object.create(null));
+}
