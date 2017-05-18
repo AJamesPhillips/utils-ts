@@ -10,17 +10,21 @@ describe("stored", function () {
     describe("parse_date", function () {
         it("should return undefined when value is not present", function () {
             var optional_date_or_string = undefined;
-            expect(undefined).toEqual(stored_1.parse_date(optional_date_or_string));
+            expect(stored_1.parse_date(optional_date_or_string)).toBeUndefined();
+        });
+        it("should return null when value is not present", function () {
+            var optional_date_or_string = null;
+            expect(stored_1.parse_date(optional_date_or_string)).toBeNull();
         });
         it("should return a date when value is a string", function () {
             var optional_date_as_string = "2017-03-20 12:20:30Z+3";
             var expected_date = new Date("2017-03-20 12:20:30Z+3");
-            expect(expected_date.getTime()).toEqual(stored_1.parse_date(optional_date_as_string).getTime());
+            expect(stored_1.parse_date(optional_date_as_string).getTime()).toEqual(expected_date.getTime());
         });
         it("should return a date when value is a date", function () {
             var optional_date_as_date = new Date("2017-03-20 12:20:30Z+3");
             var expected_date = new Date("2017-03-20 12:20:30Z+3");
-            expect(expected_date.getTime()).toEqual(stored_1.parse_date(optional_date_as_date).getTime());
+            expect(stored_1.parse_date(optional_date_as_date).getTime()).toEqual(expected_date.getTime());
         });
         it("should return undefined when value is a malformed string", function () {
             var optional_date_as_bad_string = "2017-03-20 1";
@@ -31,7 +35,11 @@ describe("stored", function () {
     describe("parse_bool", function () {
         it("should return undefined when value is not present", function () {
             var optional_bool_or_string = undefined;
-            expect(undefined).toEqual(stored_1.parse_bool(optional_bool_or_string));
+            expect(stored_1.parse_bool(optional_bool_or_string)).toBeUndefined();
+        });
+        it("should return null when value is not present", function () {
+            var optional_bool_or_string = null;
+            expect(stored_1.parse_bool(optional_bool_or_string)).toBeNull();
         });
         it("should return a boolean when value is a string", function () {
             var optional_true_bool_as_string = "true";

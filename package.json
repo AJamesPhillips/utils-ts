@@ -1,6 +1,5 @@
 {
   "name": "utils-ts-parent",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
     "test": "npm run build && cd js && npm install && npm test",
