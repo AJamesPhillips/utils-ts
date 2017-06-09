@@ -1,6 +1,6 @@
 {
   "name": "@ajp/utils-ts",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "",
   "main": "js/index.js",
   "typings": "js/index",
@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
-    "jest": "^19.0.2"
+    "jest": "19.0.2"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "react": "^15.5.4",
-    "react-router": "^4.1.1",
-    "reduce-reducers": "^0.1.2"
+    "lodash": "4.14.2",
+    "react": "15.4.2",
+    "react-router": "4.1.1",
+    "reduce-reducers": "0.1.2"
   }
 }
