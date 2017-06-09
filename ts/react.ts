@@ -17,10 +17,10 @@ export class ReactComponentBase<IRxProps, IRxState> extends React.Component<IRxP
     }
 }
 
-// interface IRouteAndStateMappedToProps extends RouteComponentProps<{}, {}>, IMappedState
+// interface IRouteAndStateMappedToProps extends RouteComponentProps<{}>, IMappedState
 
 // tslint:disable-next-line
-// export function connect_component<IMappedState, IAppState, IRouteAndStateMappedToProps extends RouteComponentProps<{}, {}> & IMappedState>(map_state_to_props: (state: IAppState) => IMappedState, RxComponent: new(p?: IRouteAndStateMappedToProps) => React.Component<IRouteAndStateMappedToProps, {}>) {
+// export function connect_component<IMappedState, IAppState, IRouteAndStateMappedToProps extends RouteComponentProps<{}> & IMappedState>(map_state_to_props: (state: IAppState) => IMappedState, RxComponent: new(p?: IRouteAndStateMappedToProps) => React.Component<IRouteAndStateMappedToProps, {}>) {
 //   // Wrap the component to inject dispatch and state into it
 //   return connect(map_state_to_props)(RxComponent);
 // }
@@ -29,7 +29,7 @@ export class ReactComponentBase<IRxProps, IRxState> extends React.Component<IRxP
 // type IGenericConnectedRxComponent<IRouteAndStateMappedToProps> = new(p: IRouteAndStateMappedToProps) => React.Component<IRouteAndStateMappedToProps, {}>;
 
 // tslint:disable-next-line
-// export function connect_component<IAppState2, IStateMappedToProps2, IRouteAndStateMappedToProps2 extends RouteComponentProps<{}, {}> & IStateMappedToProps2>(
+// export function connect_component<IAppState2, IStateMappedToProps2, IRouteAndStateMappedToProps2 extends RouteComponentProps<{}> & IStateMappedToProps2>(
 //   map_state_to_props: (state: IAppState2) => IStateMappedToProps2,
 // tslint:disable-next-line
 //   RxComponent: IGenericConnectedRxComponent<IRouteAndStateMappedToProps2>): IGenericConnectedRxComponent<IRouteAndStateMappedToProps2> {
@@ -38,17 +38,17 @@ export class ReactComponentBase<IRxProps, IRxState> extends React.Component<IRxP
 //   return a(RxComponent);
 // }
 
-export interface IRouteProps extends RouteComponentProps<{}, {}> {}
+export interface IRouteProps extends RouteComponentProps<{}> {}
 
 export function route_props_to_string(route_props: IRouteProps): string {
     return route_props.location.pathname + route_props.location.search;
 }
 
-export function key_in_query(props: RouteComponentProps<{}, {}>, key: string): boolean {
+export function key_in_query(props: RouteComponentProps<{}>, key: string): boolean {
     var query =  (props.location as any).query; // tslint:disable-line
     return _.has(query, key);
 }
 
-export function value_from_query(props: RouteComponentProps<{}, {}>, key: string): string {
+export function value_from_query(props: RouteComponentProps<{}>, key: string): string {
     return (props.location as any).query[key]; // tslint:disable-line
 }
