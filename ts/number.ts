@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 
 
-export var is_number = (val: any): boolean => {
+export var is_number = (val: any): val is number => {
     return _.isNumber(val) && !_.isNaN(val);
 }
 
