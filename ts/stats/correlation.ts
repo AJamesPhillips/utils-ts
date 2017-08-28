@@ -1,9 +1,14 @@
 import { sample_variance } from "./variance"
 
+export interface Data {
+    x: number
+    y: number
+}
+
 /**
  * http://onlinestatbook.com/2/describing_bivariate_data/calculation.html
  */
-export function sample_correlation(data: {x: number, y: number}[]) {
+export function sample_correlation(data: Data[]) {
 
     const x_stats = sample_variance(data.map(v => v.x))
     const y_stats = sample_variance(data.map(v => v.y))
@@ -14,11 +19,11 @@ export function sample_correlation(data: {x: number, y: number}[]) {
     const correlation = xy_sum / ((x_sq_deviation_sum * y_sq_deviation_sum) ** 0.5)
 
     return {
-      x_stats,
-      y_stats,
-      x_sq_deviation_sum,
-      y_sq_deviation_sum,
-      xy_sum,
-      correlation,
+        x_stats,
+        y_stats,
+        x_sq_deviation_sum,
+        y_sq_deviation_sum,
+        xy_sum,
+        correlation,
     }
 }

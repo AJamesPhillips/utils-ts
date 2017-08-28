@@ -2,10 +2,11 @@ export interface Data {
     x: number;
     y: number;
 }
-/**
- * http://onlinestatbook.com/2/describing_bivariate_data/calculation.html
- */
-export declare function sample_correlation(data: Data[]): {
+export declare function linear_regression(data: Data[]): {
+    x_standard_deviation: number;
+    y_standard_deviation: number;
+    slope: number;
+    intercept: number;
     x_stats: {
         mean: number;
         deviation_from_mean: number[];
