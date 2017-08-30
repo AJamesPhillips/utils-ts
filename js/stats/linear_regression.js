@@ -16,10 +16,12 @@ function linear_regression(data) {
     var y_standard_deviation = standard_deviation_1.sample_standard_deviation(result.y_stats);
     var slope = (result.correlation * y_standard_deviation) / x_standard_deviation;
     var intercept = result.y_stats.mean - (slope * result.x_stats.mean);
+    var predict = function (x) { return (slope * x) + intercept; };
     return __assign({}, result, { x_standard_deviation: x_standard_deviation,
         y_standard_deviation: y_standard_deviation,
         slope: slope,
-        intercept: intercept });
+        intercept: intercept,
+        predict: predict });
 }
 exports.linear_regression = linear_regression;
 //# sourceMappingURL=linear_regression.js.map

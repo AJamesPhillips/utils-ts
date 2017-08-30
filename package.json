@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "test": "npm run build && cd js && npm install && npm test",
-    "build": "rm js/*.js js/*.ts js/*.map js/test/* || true && tsc"
+    "test:noclean": "npm run build:noclean && cd js && npm test",
+    "build": "rm -r js/**/*.js js/**/*.ts js/**/*.map js/test/**/* || true && npm run build:noclean",
+    "build:noclean": "tsc"
   },
   "repository": {
     "type": "git",

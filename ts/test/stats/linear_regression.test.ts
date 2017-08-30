@@ -14,8 +14,6 @@ describe("linear_regression", () => {
 
         const result = linear_regression(data)
 
-        console.log(result)
-
         expect(result.slope).toEqual(0.425)
         expect(result.intercept).toEqual(0.7850000000000001)
     })

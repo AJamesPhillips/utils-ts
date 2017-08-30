@@ -11,7 +11,6 @@ describe("linear_regression", function () {
             { x: 5.00, y: 2.25 },
         ];
         var result = linear_regression_1.linear_regression(data);
-        console.log(result);
         expect(result.slope).toEqual(0.425);
         expect(result.intercept).toEqual(0.7850000000000001);
     });
