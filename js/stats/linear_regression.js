@@ -14,7 +14,9 @@ function linear_regression(data) {
     var result = correlation_1.sample_correlation(data);
     var x_standard_deviation = standard_deviation_1.sample_standard_deviation(result.x_stats);
     var y_standard_deviation = standard_deviation_1.sample_standard_deviation(result.y_stats);
-    var slope = (result.correlation * y_standard_deviation) / x_standard_deviation;
+    // Note again, OR'd with 0 incase result of calculation is NaN, e.g. when only
+    // one data point and correlation, x and y standard_deviations are all 0
+    var slope = ((result.correlation * y_standard_deviation) / x_standard_deviation) || 0;
     var intercept = result.y_stats.mean - (slope * result.x_stats.mean);
     var predict = function (x) { return (slope * x) + intercept; };
     return __assign({}, result, { x_standard_deviation: x_standard_deviation,

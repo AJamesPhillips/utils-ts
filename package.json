@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "test": "npm run build && cd js && npm install && npm test",
-    "test:noclean": "npm run build:noclean && cd js && npm test",
-    "build": "rm -r js/**/*.js js/**/*.ts js/**/*.map js/test/**/* || true && npm run build:noclean",
-    "build:noclean": "tsc"
+    "test:compile-only": "nodemon -w ts -x 'npm run build:compile && cd js && npm test'",
+    "build": "rm -r js/**/*.js js/**/*.ts js/**/*.map js/test/**/* || true && npm run build:compile",
+    "build:compile": "tsc"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
-    "@types/jest": "^19.2.2"
+    "@types/jest": "19.2.2",
+    "nodemon": "1.12.0"
   },
   "dependencies": {
     "@types/lodash": "4.14.65",

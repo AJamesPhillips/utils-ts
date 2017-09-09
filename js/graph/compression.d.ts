@@ -13,4 +13,8 @@ export interface CompressedLine {
     end_point: Point;
     count: number;
 }
-export declare function linear_compress(data: Point[], options?: Partial<Options>): CompressedLine[];
+export interface CompressedLineGroup {
+    reached_index: number | null;
+    compressed_lines: CompressedLine[];
+}
+export declare function linear_compress(data: Point[], options?: Partial<Options>): CompressedLineGroup;

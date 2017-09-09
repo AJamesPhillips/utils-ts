@@ -46,5 +46,9 @@ describe("sample_correlation", function () {
         result = correlation_1.sample_correlation(data);
         expect(result.correlation).toEqual(0.23513557036544702);
     });
+    it("slope does not return NaN for flat line", function () {
+        var result = correlation_1.sample_correlation([{ x: 1, y: 1 }, { x: 2, y: 1 }, { x: 3, y: 1 }]);
+        expect(result.correlation).toEqual(0);
+    });
 });
 //# sourceMappingURL=correlation.test.js.map
