@@ -13,7 +13,7 @@ You must use `npm install`, as `yarn` will (correctly) pull in v16 of @types/rea
 ### Tests
 
     $ npm run test
-    $ npm run test:compile-only
+    $ npm run test:compile-only  # skips the npm install step and runs in watch mode
 
 ## To publish
 
