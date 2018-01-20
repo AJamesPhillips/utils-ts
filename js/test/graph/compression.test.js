@@ -130,5 +130,21 @@ describe("graph linear_compress", function () {
             ]
         });
     });
+    it("compresses using minimum number of lines necessary", function () {
+        var result = compression_1.linear_compress([
+            { x: 1, y: 1 },
+            { x: 2, y: 2 },
+            { x: 3, y: 3 },
+            { x: 4, y: 4 },
+            { x: 5, y: 100 }
+        ], { max_points_per_line: 10, search_depth: 10, threshold: 0.25 });
+        expect(result).toEqual({
+            reached_index: 4,
+            compressed_lines: [
+                { start_point: { x: 1, y: 1 }, end_point: { x: 4, y: 4 }, count: 4 },
+                { start_point: { x: 4, y: 4 }, end_point: { x: 5, y: 100 }, count: 2 }
+            ]
+        });
+    });
 });
 //# sourceMappingURL=compression.test.js.map

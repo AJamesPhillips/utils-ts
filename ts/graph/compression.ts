@@ -79,7 +79,7 @@ function _linear_compress (data: Point[], start_data_index: number, options: Opt
     let tries = 2
     while (!line || (tries < options.search_depth && lower_end_data_index !== upper_end_data_index)) {
 
-        let next_try_end_data_index = Math.floor((upper_end_data_index - lower_end_data_index) / 2) + lower_end_data_index
+        let next_try_end_data_index = Math.ceil((upper_end_data_index - lower_end_data_index) / 2) + lower_end_data_index
         const latest_line = get_compressed_line({data, start_data_index, end_data_index: next_try_end_data_index, options})
         lower_end_data_index = latest_line ? next_try_end_data_index : lower_end_data_index
         upper_end_data_index = latest_line ? upper_end_data_index : (next_try_end_data_index - 1)

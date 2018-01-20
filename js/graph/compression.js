@@ -44,7 +44,7 @@ function _linear_compress(data, start_data_index, options) {
     upper_end_data_index = line ? upper_end_data_index : (second_try_upper_end_data_index - 1);
     var tries = 2;
     while (!line || (tries < options.search_depth && lower_end_data_index !== upper_end_data_index)) {
-        var next_try_end_data_index = Math.floor((upper_end_data_index - lower_end_data_index) / 2) + lower_end_data_index;
+        var next_try_end_data_index = Math.ceil((upper_end_data_index - lower_end_data_index) / 2) + lower_end_data_index;
         var latest_line = get_compressed_line({ data: data, start_data_index: start_data_index, end_data_index: next_try_end_data_index, options: options });
         lower_end_data_index = latest_line ? next_try_end_data_index : lower_end_data_index;
         upper_end_data_index = latest_line ? upper_end_data_index : (next_try_end_data_index - 1);
