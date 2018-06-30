@@ -59,7 +59,7 @@ exports.simple_objects_equal = simple_objects_equal;
 function parse_query_params(query_params) {
     // remove beginning ?
     query_params = query_params.slice(1);
-    return query_params.split(",").reduce(function (accum, p) {
+    return query_params.split("&").reduce(function (accum, p) {
         var _a = p.split("="), key = _a[0], value = _a[1];
         accum[key] = value;
         return accum;

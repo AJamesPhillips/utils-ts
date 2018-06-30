@@ -65,7 +65,7 @@ export interface IQueryParams {
 export function parse_query_params(query_params: string): IQueryParams {
     // remove beginning ?
     query_params = query_params.slice(1);
-    return query_params.split(",").reduce<IQueryParams>((accum: IQueryParams, p: string) => {
+    return query_params.split("&").reduce<IQueryParams>((accum: IQueryParams, p: string) => {
         var [key, value] = p.split("=");
         accum[key] = value;
         return accum;

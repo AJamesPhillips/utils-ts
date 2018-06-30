@@ -14,7 +14,7 @@ var _ = require("lodash");
 var React = require("react");
 // Note the large number of  "// tslint:disable-line" and "tslint:disable-next-line" should be removed and
 // replaced with the correct types (or just made shorter)
-var ReactComponentBase = (function (_super) {
+var ReactComponentBase = /** @class */ (function (_super) {
     __extends(ReactComponentBase, _super);
     function ReactComponentBase() {
         return _super !== null && _super.apply(this, arguments) || this;

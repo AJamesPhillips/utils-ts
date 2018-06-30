@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = require("lodash");
-var SubjectBase = (function () {
+var SubjectBase = /** @class */ (function () {
     function SubjectBase() {
         this.observers = [];
     }
