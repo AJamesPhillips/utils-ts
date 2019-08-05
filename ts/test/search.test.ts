@@ -3,6 +3,7 @@ import {
     make_value_predicate,
     // binary_search_for_value,
     binary_search_for_value_in_range,
+    binary_search_vlookup,
 } from "../search"
 
 describe("binary_search", function() {
@@ -33,9 +34,27 @@ describe("binary_search_for_value_in_range", function() {
         expect(binary_search_for_value_in_range([2], 2)).toEqual({ index: 0, value: 2 })
         expect(binary_search_for_value_in_range([1, 2], 2)).toEqual({ index: 1, value: 2 })
         expect(binary_search_for_value_in_range([1, 2, 3], 2)).toEqual({ index: 1, value: 2 })
+        expect(binary_search_for_value_in_range([1, 2, 3], 1)).toEqual({ index: 0, value: 1 })
     })
 
     it("sets min correctly", function() {
         expect(binary_search_for_value_in_range([-2], -2)).toEqual({ index: 0, value: -2 })
+    })
+})
+
+describe("binary_search_vlookup", function() {
+    function e<E> (value: E, lookup_max: number) {
+        return { value, lookup_max }
+    }
+
+    it("matching value", function() {
+        expect(binary_search_vlookup([e("two", 2)], 2)).toEqual({ index: 0, value: e("two", 2) })
+        expect(binary_search_vlookup([e("one", 1), e("two", 2)], 2)).toEqual({ index: 1, value: e("two", 2) })
+        expect(binary_search_vlookup([e("one", 1), e("two", 2), e("three", 3)], 2)).toEqual({ index: 1, value: e("two", 2) })
+        expect(binary_search_vlookup([e("one", 1), e("two", 2), e("three", 3)], 1)).toEqual({ index: 0, value: e("one", 1) })
+    })
+
+    it("sets min correctly", function() {
+        expect(binary_search_vlookup([e("-two", -2)], -2)).toEqual({ index: 0, value: e("-two", -2) })
     })
 })

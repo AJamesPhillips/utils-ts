@@ -34,15 +34,43 @@ function binary_search_for_value(list, value) {
     return binary_search(list, predicate);
 }
 exports.binary_search_for_value = binary_search_for_value;
-function binary_search_for_value_in_range(list, value, min) {
-    var min_number = min !== undefined ? min : list[0];
+function binary_search_for_value_in_range(list, value) {
     var transformed_list = list.map(function (v, index) { return ({
-        min: index === 0 ? min_number : list[index - 1],
+        min: index === 0 ? undefined : list[index - 1],
         max: v
     }); });
-    var predicate = function (v) { return (v.max >= value && value >= v.min) ? 0 : (v.min > value ? -1 : 1); };
+    var predicate = function (v) {
+        var result = 0;
+        if (v.max < value) {
+            result = 1;
+        }
+        else if (v.min !== undefined && value <= v.min) {
+            result = -1;
+        }
+        return result;
+    };
     var result = binary_search(transformed_list, predicate);
     return result ? { index: result.index, value: result.value.max } : undefined;
 }
 exports.binary_search_for_value_in_range = binary_search_for_value_in_range;
+function binary_search_vlookup(list, value) {
+    var transformed_list = list.map(function (v, index) { return ({
+        value: v.value,
+        min: index === 0 ? undefined : list[index - 1].lookup_max,
+        max: v.lookup_max
+    }); });
+    var predicate = function (v) {
+        var result = 0;
+        if (v.max < value) {
+            result = 1;
+        }
+        else if (v.min !== undefined && value <= v.min) {
+            result = -1;
+        }
+        return result;
+    };
+    var result = binary_search(transformed_list, predicate);
+    return result ? { index: result.index, value: list[result.index] } : undefined;
+}
+exports.binary_search_vlookup = binary_search_vlookup;
 //# sourceMappingURL=search.js.map

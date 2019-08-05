@@ -7,7 +7,17 @@ export declare function binary_search_for_value<E>(list: E[], value: E): {
     index: number;
     value: E;
 } | undefined;
-export declare function binary_search_for_value_in_range(list: number[], value: number, min?: number): {
+export declare function binary_search_for_value_in_range(list: number[], value: number): {
     index: number;
     value: number;
+} | undefined;
+export declare function binary_search_vlookup<E>(list: {
+    value: E;
+    lookup_max: number;
+}[], value: number): {
+    index: number;
+    value: {
+        value: E;
+        lookup_max: number;
+    };
 } | undefined;
