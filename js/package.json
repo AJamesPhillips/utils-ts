@@ -22,11 +22,11 @@
   },
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
-    "jest": "19.0.2"
+    "jest": "26.6.3"
   },
   "dependencies": {
-    "lodash": "4.14.2",
-    "react": "15.4.2",
+    "lodash": "4.17.20",
+    "react": "17.0.1",
     "react-router": "4.1.1",
     "reduce-reducers": "0.1.2"
   }

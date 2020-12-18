@@ -19,7 +19,7 @@
   "homepage": "https://github.com/AJamesPhillips/utils-ts#readme",
   "devDependencies": {
     "@types/jest": "19.2.2",
-    "nodemon": "1.14.1"
+    "nodemon": "2.0.6"
   },
   "dependencies": {
     "@types/lodash": "4.14.65",
