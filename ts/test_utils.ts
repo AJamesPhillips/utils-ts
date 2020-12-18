@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 
 /**
  * Provide some light weight testing utils
@@ -17,9 +16,9 @@ export function expect_to_equal(value1: any, value2: any, test_name: string = ""
    }
 }
 
-export function expect_to_contain<T>(list_of_values: T[], value: T, test_name: string = '') {
-   if(!_.includes(list_of_values, value)) {
-      throw new Error(`FAILED: "${test_name}" Value not contained in list: "${value}" not in "${list_of_values.map((v) => v.toString()).join(', ')}"`);
+export function expect_to_contain<T>(list_of_values: T[], value: T, test_name: string = "") {
+   if (list_of_values.indexOf(value) > -1) {
+      throw new Error(`FAILED: "${test_name}" Value not contained in list: "${value}" not in "${list_of_values.map(v => `${v}`).join(", ")}"`);
    } else {
       console.log(`PASSED: "${test_name}"`);
    }

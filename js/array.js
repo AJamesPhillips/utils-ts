@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
 function copy_list_with_replace(list_t, index, new_obj) {
     return list_t
         .slice(0, index)
@@ -13,14 +12,14 @@ function copy_list_excluding_index(list_t, index) {
 }
 exports.copy_list_excluding_index = copy_list_excluding_index;
 function find_index_by_predicate(list, predicate) {
-    return _.findIndex(list, predicate);
+    return list.findIndex(predicate);
 }
 exports.find_index_by_predicate = find_index_by_predicate;
 function update_entry_by_predicate_and_copy_list(list_t, predicate, update) {
     var index = find_index_by_predicate(list_t, predicate);
     if (index === -1)
         throw new Error("No entry found with predicate");
-    var updated_obj = _.assign({}, list_t[index], update);
+    var updated_obj = Object.assign({}, list_t[index], update);
     return copy_list_with_replace(list_t, index, updated_obj);
 }
 exports.update_entry_by_predicate_and_copy_list = update_entry_by_predicate_and_copy_list;

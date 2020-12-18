@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 import reduce_reducers = require("reduce-reducers");
 
 export interface IReducerFunction<T, A> {
@@ -17,7 +16,7 @@ export function typed_reduce_reducers<T, A>(...functions: IReducerFunction<T, A>
  */
 export function make_new_state_generic<State, PartialState>() {
     let make_new_state = function(old_state: State, new_partial_state: PartialState): State {
-        return _.assign<{}, State, PartialState>({}, old_state, new_partial_state);
+        return Object.assign({}, old_state, new_partial_state);
     };
     return make_new_state;
 }

@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
 var reduce_reducers = require("reduce-reducers");
 function typed_reduce_reducers() {
     var functions = [];
@@ -18,7 +17,7 @@ exports.typed_reduce_reducers = typed_reduce_reducers;
  */
 function make_new_state_generic() {
     var make_new_state = function (old_state, new_partial_state) {
-        return _.assign({}, old_state, new_partial_state);
+        return Object.assign({}, old_state, new_partial_state);
     };
     return make_new_state;
 }

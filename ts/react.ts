@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import { has } from "lodash";
 import * as React from "react";
 // import {connect} from "react-redux";
 import {RouteComponentProps} from "react-router";
@@ -8,7 +8,8 @@ import {RouteComponentProps} from "react-router";
 
 export class ReactComponentBase<IRxProps, IRxState> extends React.Component<IRxProps, IRxState> {
     updateState(partial_state: any) { // tslint:disable-line
-        this.setState(_.assign<IRxState>({}, this.state, partial_state), undefined, false);
+        const merged = Object.assign({}, this.state, partial_state)
+        this.setState(merged, undefined, false);
     }
 
     setState(state: any, callback?: () => any, warn: boolean = true) { // tslint:disable-line
@@ -46,7 +47,7 @@ export function route_props_to_string(route_props: IRouteProps): string {
 
 export function key_in_query(props: RouteComponentProps<{}>, key: string): boolean {
     var query =  (props.location as any).query; // tslint:disable-line
-    return _.has(query, key);
+    return has(query, key);
 }
 
 export function value_from_query(props: RouteComponentProps<{}>, key: string): string {

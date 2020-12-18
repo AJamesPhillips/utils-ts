@@ -1,8 +1,7 @@
-import * as _ from "lodash";
 
 
 export var is_number = (val: any): val is number => {
-    return _.isNumber(val) && !_.isNaN(val);
+    return Number.isFinite(val) && !Number.isNaN(val);
 }
 
 export var is_integer = (num: number, loud: boolean = false): boolean => {

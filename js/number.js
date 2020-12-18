@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
 exports.is_number = function (val) {
-    return _.isNumber(val) && !_.isNaN(val);
+    return Number.isFinite(val) && !Number.isNaN(val);
 };
 exports.is_integer = function (num, loud) {
     if (loud === void 0) { loud = false; }

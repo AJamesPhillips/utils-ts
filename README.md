@@ -19,3 +19,4 @@ You must use `npm install`, as `yarn` will (correctly) pull in v16 of @types/rea
 
 After `$ npm test` passes.  `$ cd js && npm login`
 Increase version in `js/package.json`
+`npm publish`

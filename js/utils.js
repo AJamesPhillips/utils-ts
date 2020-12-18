@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
+var lodash_1 = require("lodash");
 exports.capitalize_first_letter = function (val) {
     return val.charAt(0).toUpperCase() + val.slice(1);
 };
@@ -43,7 +43,7 @@ function simple_objects_equal(props) {
             return false;
         for (var i = 0; i < props.length; ++i) {
             var key = props[i];
-            if (_.isDate(obj1[key])) {
+            if (lodash_1.isDate(obj1[key])) {
                 if (obj1[key].toString() !== obj2[key].toString())
                     return false;
             }

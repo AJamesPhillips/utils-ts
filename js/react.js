@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
+var lodash_1 = require("lodash");
 var React = require("react");
 // Note the large number of  "// tslint:disable-line" and "tslint:disable-next-line" should be removed and
 // replaced with the correct types (or just made shorter)
@@ -20,7 +20,8 @@ var ReactComponentBase = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ReactComponentBase.prototype.updateState = function (partial_state) {
-        this.setState(_.assign({}, this.state, partial_state), undefined, false);
+        var merged = Object.assign({}, this.state, partial_state);
+        this.setState(merged, undefined, false);
     };
     ReactComponentBase.prototype.setState = function (state, callback, warn) {
         if (warn === void 0) { warn = true; }
@@ -38,7 +39,7 @@ function route_props_to_string(route_props) {
 exports.route_props_to_string = route_props_to_string;
 function key_in_query(props, key) {
     var query = props.location.query; // tslint:disable-line
-    return _.has(query, key);
+    return lodash_1.has(query, key);
 }
 exports.key_in_query = key_in_query;
 function value_from_query(props, key) {

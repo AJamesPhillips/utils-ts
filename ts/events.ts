@@ -1,5 +1,3 @@
-import * as _ from "lodash";
-
 export interface EventResult {}
 
 export interface Observer {
@@ -19,8 +17,7 @@ export class SubjectBase implements Subject {
     }
 
     remove_observer(observer: Observer) {
-        // TODO can we remove the cast?
-        this.observers = <Observer[]> _.reject(this.observers, (o) => o === observer);
+        this.observers = this.observers.filter(o => o !== observer);
     }
 
     protected inform_observers(event_result: EventResult) {

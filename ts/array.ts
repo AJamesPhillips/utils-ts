@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 
 export interface IPredicate<T> {
     (t: T): boolean;
@@ -16,7 +15,7 @@ export function copy_list_excluding_index<T>(list_t: T[], index: number): T[] {
 }
 
 export function find_index_by_predicate<T>(list: T[], predicate: IPredicate<T>): number {
-    return _.findIndex(list, predicate);
+    return list.findIndex(predicate);
 }
 
 export function update_entry_by_predicate_and_copy_list<T, TPartial>(
@@ -24,7 +23,7 @@ export function update_entry_by_predicate_and_copy_list<T, TPartial>(
     var index = find_index_by_predicate(list_t, predicate);
     if(index === -1) throw new Error("No entry found with predicate");
 
-    var updated_obj = _.assign<T>({}, list_t[index], update);
+    var updated_obj = Object.assign({}, list_t[index], update);
 
     return copy_list_with_replace<T>(list_t, index, updated_obj);
 }

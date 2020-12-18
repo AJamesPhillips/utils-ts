@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
 var SubjectBase = /** @class */ (function () {
     function SubjectBase() {
         this.observers = [];
@@ -9,8 +8,7 @@ var SubjectBase = /** @class */ (function () {
         this.observers.push(observer);
     };
     SubjectBase.prototype.remove_observer = function (observer) {
-        // TODO can we remove the cast?
-        this.observers = _.reject(this.observers, function (o) { return o === observer; });
+        this.observers = this.observers.filter(function (o) { return o !== observer; });
     };
     SubjectBase.prototype.inform_observers = function (event_result) {
         this.observers.map(function (observer) { return observer.event(event_result); });

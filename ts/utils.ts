@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import { isDate } from "lodash";
 
 export var capitalize_first_letter = (val: string) => {
     return val.charAt(0).toUpperCase() + val.slice(1);
@@ -12,14 +12,14 @@ export var is_browser = () => typeof window !== "undefined";
 
 export function to_pojo(obj: any): any {
     var pojo = {};
-    if(obj instanceof Array) {
+    if (obj instanceof Array) {
         pojo = obj.map(to_pojo);
     } else {
         pojo = {};
         Object.getOwnPropertyNames(obj).forEach(function(name: string) {
             var value = obj[name];
-            if(value === null || value === undefined) return;
-            if(typeof value === "object") {
+            if (value === null || value === undefined) return;
+            if (typeof value === "object") {
                 value = to_pojo(value);
             }
             // console.log("+defining property....", name, {value: value}, pojo)
@@ -44,14 +44,14 @@ export interface IndexableByString<T> {
 
 export function simple_objects_equal<T extends IndexableByString<any>>(props: string[]) {
     return function(obj1: T, obj2: T): boolean {
-        if(obj1 === obj2) return true;
-        if(!obj1 || !obj2) return false;
+        if (obj1 === obj2) return true;
+        if (!obj1 || !obj2) return false;
         for(var i=0; i < props.length; ++i) {
             var key = props[i];
-            if(_.isDate(obj1[key])) {
-                if(obj1[key].toString() !== obj2[key].toString()) return false;
+            if (isDate(obj1[key])) {
+                if (obj1[key].toString() !== obj2[key].toString()) return false;
             } else {
-                if(obj1[key] !== obj2[key]) return false;
+                if (obj1[key] !== obj2[key]) return false;
             }
         }
         return true;
@@ -77,7 +77,7 @@ export function parse_query_params(query_params: string): IQueryParams {
  */
 export function node_btoa(raw: string) {
     var base64: string;
-    if(is_browser()) {
+    if (is_browser()) {
         base64 = window.btoa(raw);
     } else {
         base64 = new Buffer(raw).toString("base64");
@@ -90,7 +90,7 @@ export function node_btoa(raw: string) {
  */
 export function node_atob(b64_encoded: string) {
     var decoded: string;
-    if(is_browser()) {
+    if (is_browser()) {
         decoded = window.atob(b64_encoded);
     } else {
         decoded = new Buffer(b64_encoded, "base64").toString();
