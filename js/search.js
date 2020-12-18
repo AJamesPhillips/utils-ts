@@ -34,26 +34,7 @@ function binary_search_for_value(list, value) {
     return binary_search(list, predicate);
 }
 exports.binary_search_for_value = binary_search_for_value;
-function binary_search_for_value_in_range(list, value) {
-    var transformed_list = list.map(function (v, index) { return ({
-        min: index === 0 ? undefined : list[index - 1],
-        max: v
-    }); });
-    var predicate = function (v) {
-        var result = 0;
-        if (v.max < value) {
-            result = 1;
-        }
-        else if (v.min !== undefined && value <= v.min) {
-            result = -1;
-        }
-        return result;
-    };
-    var result = binary_search(transformed_list, predicate);
-    return result ? { index: result.index, value: result.value.max } : undefined;
-}
-exports.binary_search_for_value_in_range = binary_search_for_value_in_range;
-function binary_search_vlookup(list, value) {
+function binary_search_vlookup(list, lookup_value) {
     var transformed_list = list.map(function (v, index) { return ({
         value: v.value,
         min: index === 0 ? undefined : list[index - 1].lookup_max,
@@ -61,10 +42,10 @@ function binary_search_vlookup(list, value) {
     }); });
     var predicate = function (v) {
         var result = 0;
-        if (v.max < value) {
+        if (v.max < lookup_value) {
             result = 1;
         }
-        else if (v.min !== undefined && value <= v.min) {
+        else if (v.min !== undefined && lookup_value <= v.min) {
             result = -1;
         }
         return result;
@@ -73,4 +54,13 @@ function binary_search_vlookup(list, value) {
     return result ? { index: result.index, value: list[result.index] } : undefined;
 }
 exports.binary_search_vlookup = binary_search_vlookup;
+function binary_search_for_value_in_range(list, value) {
+    var transformed_list = list.map(function (v) { return ({ value: v, lookup_max: v }); });
+    var result = binary_search_vlookup(transformed_list, value);
+    return result && {
+        index: result.index,
+        value: list[result.index],
+    };
+}
+exports.binary_search_for_value_in_range = binary_search_for_value_in_range;
 //# sourceMappingURL=search.js.map

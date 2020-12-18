@@ -20,17 +20,6 @@ describe("binary_search", function () {
         expect(search_1.binary_search([1, 2, 3], find_one)).toEqual({ index: 1, value: 2 });
     });
 });
-describe("binary_search_for_value_in_range", function () {
-    it("matching value", function () {
-        expect(search_1.binary_search_for_value_in_range([2], 2)).toEqual({ index: 0, value: 2 });
-        expect(search_1.binary_search_for_value_in_range([1, 2], 2)).toEqual({ index: 1, value: 2 });
-        expect(search_1.binary_search_for_value_in_range([1, 2, 3], 2)).toEqual({ index: 1, value: 2 });
-        expect(search_1.binary_search_for_value_in_range([1, 2, 3], 1)).toEqual({ index: 0, value: 1 });
-    });
-    it("sets min correctly", function () {
-        expect(search_1.binary_search_for_value_in_range([-2], -2)).toEqual({ index: 0, value: -2 });
-    });
-});
 describe("binary_search_vlookup", function () {
     function e(value, lookup_max) {
         return { value: value, lookup_max: lookup_max };
@@ -43,6 +32,17 @@ describe("binary_search_vlookup", function () {
     });
     it("sets min correctly", function () {
         expect(search_1.binary_search_vlookup([e("-two", -2)], -2)).toEqual({ index: 0, value: e("-two", -2) });
+    });
+});
+describe("binary_search_for_value_in_range", function () {
+    it("matching value", function () {
+        expect(search_1.binary_search_for_value_in_range([2], 2)).toEqual({ index: 0, value: 2 });
+        expect(search_1.binary_search_for_value_in_range([1, 2], 2)).toEqual({ index: 1, value: 2 });
+        expect(search_1.binary_search_for_value_in_range([1, 2, 3], 2)).toEqual({ index: 1, value: 2 });
+        expect(search_1.binary_search_for_value_in_range([1, 2, 3], 1)).toEqual({ index: 0, value: 1 });
+    });
+    it("sets min correctly", function () {
+        expect(search_1.binary_search_for_value_in_range([-2], -2)).toEqual({ index: 0, value: -2 });
     });
 });
 //# sourceMappingURL=search.test.js.map

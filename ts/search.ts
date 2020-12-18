@@ -39,36 +39,7 @@ export function binary_search_for_value<E> (list: E[], value: E) {
 	return binary_search(list, predicate)
 }
 
-export function binary_search_for_value_in_range (list: number[], value: number) {
-	interface T {
-		min?: number
-		max: number
-	}
-	const transformed_list: T[] = list.map((v, index) => ({
-		min: index === 0 ? undefined : list[index - 1],
-		max: v
-	}))
-
-	const predicate = (v: T) => {
-		let result: 1 | 0 | -1 = 0
-
-		if (v.max < value)
-		{
-			result = 1
-		}
-		else if (v.min !== undefined && value <= v.min)
-		{
-			result = -1
-		}
-
-		return result
-	}
-
-	const result = binary_search(transformed_list, predicate)
-	return result ? { index: result.index, value: result.value.max } : undefined
-}
-
-export function binary_search_vlookup<E> (list: { value: E, lookup_max: number }[], value: number) {
+export function binary_search_vlookup<E> (list: { value: E, lookup_max: number }[], lookup_value: number) {
 	interface T {
 		value: E
 		min?: number
@@ -83,11 +54,11 @@ export function binary_search_vlookup<E> (list: { value: E, lookup_max: number }
 	const predicate = (v: T) => {
 		let result: 1 | 0 | -1 = 0
 
-		if (v.max < value)
+		if (v.max < lookup_value)
 		{
 			result = 1
 		}
-		else if (v.min !== undefined && value <= v.min)
+		else if (v.min !== undefined && lookup_value <= v.min)
 		{
 			result = -1
 		}
@@ -97,4 +68,14 @@ export function binary_search_vlookup<E> (list: { value: E, lookup_max: number }
 
 	const result = binary_search(transformed_list, predicate)
 	return result ? { index: result.index, value: list[result.index] } : undefined
+}
+
+export function binary_search_for_value_in_range (list: number[], value: number) {
+	const transformed_list = list.map(v => ({ value: v, lookup_max: v }))
+	const result = binary_search_vlookup(transformed_list, value)
+
+	return result && {
+		index: result.index,
+		value: list[result.index],
+	}
 }
